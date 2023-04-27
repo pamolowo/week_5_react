@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#box{
+  margin:10% auto;
+  width: 35%;
+  background-color: azure;
+  box-shadow: rgb(210, 210, 211) 0px 0px 10px 3px, rgb(210, 210, 211) 0px 0px 10px;;
+  display: flex;
+  flex-direction: column;
+  
+ 
+  
+}
+form{
+   padding: 1rem;
+
+}
