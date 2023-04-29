@@ -2,10 +2,10 @@
 import React, { useState } from 'react';
 import { TextField, Box, Button } from '@mui/material';
 import './spinner.css';
-import './Loading'
 import './index.css';
+import Loading from './Loading';
 
-const Form = () => {
+const Form = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -25,7 +25,9 @@ const Form = () => {
     } else if (name === 'message') {
       setMessage(value);
     }
+    console.log(event);
   };
+ 
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -84,11 +86,13 @@ const Form = () => {
           setIsLoading(false);
         });
     }
+    props.submitForm()
+    
   };
 
   return (
     <>
-      {/* { isLoading && <div> <Loading/> </div>} */}
+     
       <Box
       component="form"
       id ='box'
@@ -98,7 +102,8 @@ const Form = () => {
       noValidate
       autoComplete="off"
     >
-    <form onSubmit={handleSubmit}>
+      <h1>Contact Us</h1>
+    <div onSubmit={handleSubmit} className='form'>
       <TextField
         label="Name"
         required
@@ -110,6 +115,7 @@ const Form = () => {
         helperText={errors.name}
         fullWidth
         margin="normal"
+        className='textfield'
       />
       <TextField
         label="Email"
@@ -122,6 +128,7 @@ const Form = () => {
         helperText={errors.email}
         fullWidth
         margin="normal"
+        className='textfield'
       />
       <TextField
         label="Subject"
@@ -131,6 +138,7 @@ const Form = () => {
         onChange={handleChange}
         fullWidth
         margin="normal"
+        className='textfield'
       />
       <TextField
         label="Message"
@@ -144,11 +152,13 @@ const Form = () => {
         margin="normal"
         multiline
         rows={4}
+        className='textfield'
       />
       
       <Button type='submit' variant="contained" >Submit</Button>
-      </form>
+      </div>
       </Box>
+      { isLoading && <div> <Loading/> <p>Thank you for submitting!</p></div>}
       </>
 )
   }
